@@ -1,16 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import feels from './feels.svg'
 
-const NavBar = () => <nav>
-  <a href="/home">Home</a>
-  <a href="/about">About</a>
-  <a href="/blog">Blogg</a>
-</nav>
+const Main = () => (
+  <main>
+    <img src={feels} alt="feels guy" />
+  </main>
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <NavBar />
+    <Main />
   </React.StrictMode>,
-  document.getElementById('main')
-)
+  document.getElementById("main")
+);
