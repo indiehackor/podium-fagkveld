@@ -11,7 +11,7 @@ function App() {
         fontFamily: "'Source Code Pro', monospace",
       }}
     >
-      <h1>Hello World From React-Rollup</h1>
+      <h1>Hello World From React</h1>
     </div>
   );
 }
