@@ -2,6 +2,8 @@ import babel from '@rollup/plugin-babel';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss'
+import path from 'path'
 
 export default {
   input: "src/index.js",
@@ -26,5 +28,9 @@ export default {
     }),
     // Convert CommonJS modules to ES6, so they can be included in a Rollup bundle
     commonjs(),
+    postcss({
+      extract: true,
+      extract: path.resolve('dist/styles.css')
+    })
   ]
 };

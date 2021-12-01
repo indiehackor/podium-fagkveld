@@ -18,6 +18,7 @@ app.use(podlet.middleware());
 app.use('/dist', express.static("dist"))
 
 podlet.js({ value: `http://localhost:${port}/dist/bundle.js`, defer: true  });
+podlet.css({ value: `http://localhost:${port}/dist/styles.css`  });
 
 // podlet.css({})
 

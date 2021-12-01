@@ -1,18 +1,11 @@
 import React from "react";
+import './styles.css'
 
 function App() {
   return (
-    <div
-      style={{
-        background: "#3a86ff",
-        padding: 24,
-        border: "1px dashed red",
-        color: "white",
-        fontFamily: "'Source Code Pro', monospace",
-      }}
-    >
+    <React.Fragment>
       <h1>Hello World From React</h1>
-    </div>
+    </React.Fragment>
   );
 }
 export default App;
