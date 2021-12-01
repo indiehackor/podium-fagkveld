@@ -1,0 +1,11 @@
+{
+  "logLevel": "debug",
+  "shutdownGracePeriod": 0,
+  "metrics": false,
+  "development": true,
+  "podlets": {
+    "header": "http://header.svc.dev.finn.no/manifest.json",
+    "footer": "http://footer.svc.dev.finn.no/manifest.json",
+    "main": "http://localhost:3000/manifest.json"
+  }
+}

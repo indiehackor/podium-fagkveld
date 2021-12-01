@@ -1,0 +1,34 @@
+{
+  "name": "layout-example",
+  "type": "module",
+  "private": true,
+  "version": "0.0.1",
+  "description": "layout server",
+  "license": "none",
+  "main": "./src/index.js",
+  "dependencies": {
+    "@podium/layout": "^4.6.100",
+    "convict": "6.2.1",
+    "convict-format-with-validator": "6.2.0",
+    "express": "^4.17.1",
+    "pino": "7.0.5",
+    "pino-pretty": "7.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1",
+    "supertest": "^6.1.6",
+    "tap": "^15.0.10"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix . --ignore-pattern '/includes/'",
+    "start": "node src/index.js | pino-pretty",
+    "test": "echo TESTS NA",
+    "test:snapshots": "DEVELOPMENT=false tap tests/**/*.js --snapshot"
+  }
+}

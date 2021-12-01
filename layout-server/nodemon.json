@@ -1,0 +1,5 @@
+{
+    "watch": ["."],
+    "exec": "node . | fiaas-pino-pretty",
+    "ignore": ["dist", "includes", "static"]
+}
