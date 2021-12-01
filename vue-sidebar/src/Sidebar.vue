@@ -4,21 +4,34 @@
 
 <script setup>
 const LINKS = [
-  { url: "/", text: "Home" },
-  { url: "/foo", text: "Foo" },
-  { url: "/bar", text: "Bar" },
+  { url: "/", text: "MADE" },
+  { url: "/", text: "WITH" },
+  { url: "/", text: "VUE" },
 ];
 </script>
 
 <style>
 aside#sidebar {
-  background: red;
+  background: #ef233c;
   color: white;
   padding: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 
 a {
-  padding: 8px;
+  margin-bottom: 16px;
+  color: white;
+  border-bottom: 1px solid  white;
+  text-decoration: none;
+  transition: transform 200ms;
+}
+
+a::visited {
+  color: white;
+}
+a:hover {
+  transform: scale(1.1);
 }
 </style>

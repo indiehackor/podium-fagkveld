@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c rollup.config.js",
-    "start": "npm run build && node server.js"
+    "start": "npm run build && nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-replace": "^3.0.0",
+    "nodemon": "^2.0.15",
     "postcss": "^8.4.4",
     "rollup": "^2.60.1",
     "rollup-plugin-postcss": "^4.0.2"

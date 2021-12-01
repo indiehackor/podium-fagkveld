@@ -1,34 +1,21 @@
 import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url';
 import Podlet from '@podium/podlet';
 
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-
 const app = express()
-const port = 3000
+const port = 8081
 
 const podlet = new Podlet({
-  name: 'html-footer',
-  // version: '1.0.0',
-  /**
-   * brukes i layout til å detektere endring
-   * if you change version when you update you don't have to restart layout
-   * build hash i prod
-   */
+  name: 'html-header',
   version: Date.now().toString(),
-  pathname: '/', // required
-  development: true, // optional, defaults to false
+  pathname: '/',
+  development: true,
 });
 
 app.use(podlet.middleware());
 
-app.use('/dist', express.static("dist"))
+app.use(express.static("public"))
 
-podlet.js({ value: 'http://localhost:3000/dist/bundle.js', defer: true  });
+podlet.css({ value: `http://localhost:${port}/styles.css`  });
 
 // podlet.css({})
 
@@ -39,7 +26,7 @@ podlet.js({ value: 'http://localhost:3000/dist/bundle.js', defer: true  });
 // broser får hele template med podlet, layout får bare snippet
 
 app.get(podlet.content(), (req, res) => {
-  res.status(200).podiumSend(`<nav id="root"></nav>`);
+  res.status(200).podiumSend(`<header id="header">I'm a header</header>`);
 })
 
 app.get(podlet.manifest(), (req, res) => {
@@ -48,5 +35,5 @@ app.get(podlet.manifest(), (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`header podlet is running at http://localhost:${port}`)
 })

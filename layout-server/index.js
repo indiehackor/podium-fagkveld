@@ -65,7 +65,7 @@ app.get("/", async (req, res) => {
   incoming.view.title = "Layout Server Example";
   incoming.podlets = [$main, $header, $footer, $sidebar];
 
-  res.podiumSend($main.content + $sidebar.content);
+  res.podiumSend($header.content + $main.content + $sidebar.content + $footer.content);
 });
 
 // const headerPodlet = layout.client.register({
