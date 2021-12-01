@@ -9,7 +9,7 @@ convict.addFormats(convictWithValidator);
 
 let pack = {};
 try {
-  pack = JSON.parse(fs.readFileSync(join(__dirname, "../../package.json")));
+  pack = JSON.parse(fs.readFileSync(join(__dirname, "../package.json")));
 } catch (error) {
   /* empty */
 }
@@ -18,7 +18,7 @@ const conf = convict({
   name: {
     format: String,
     doc: "Name of the application",
-    default: pack.name.replace("@finn-no/", ""),
+    default: pack.name,
     env: "NAME",
   },
   version: {

@@ -27,7 +27,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix . --ignore-pattern '/includes/'",
-    "start": "node src/index.js | pino-pretty",
+    "start": "node index.js | pino-pretty",
     "test": "echo TESTS NA",
     "test:snapshots": "DEVELOPMENT=false tap tests/**/*.js --snapshot"
   }

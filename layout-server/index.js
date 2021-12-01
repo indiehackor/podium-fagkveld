@@ -11,12 +11,17 @@ const logger = pino({
 
 const app = express({ logger });
 
+app.use('/public', express.static("public"))
+
 const layout = new Layout({
   development: config.get("development"),
   pathname: "/",
   logger,
   name: "layout-server",
 });
+
+layout.css({ value: 'http://localhost:8080/public/styles.css'  });
+
 
 const main = layout.client.register({
   name: "main",
@@ -60,7 +65,7 @@ app.get("/", async (req, res) => {
   incoming.view.title = "Layout Server Example";
   incoming.podlets = [$main, $header, $footer, $sidebar];
 
-  res.podiumSend(`<div>${$main.content}</div>`);
+  res.podiumSend($main.content + $sidebar.content);
 });
 
 // const headerPodlet = layout.client.register({
