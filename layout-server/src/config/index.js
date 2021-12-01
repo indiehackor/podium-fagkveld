@@ -26,6 +26,11 @@ const conf = convict({
     default: Date.now().toString(),
     env: "VERSION",
   },
+  env: {
+    format: ["local", "dev", "prod"],
+    default: "local",
+    env: "FIAAS_ENVIRONMENT",
+  },
   logLevel: {
     format: ["trace", "debug", "info", "warn", "error", "fatal", "silent"],
     default: "info",
