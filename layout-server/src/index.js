@@ -1,42 +1,54 @@
-import express from 'express'
-import Layout from '@podium/layout';
-import pino from 'pino';
+import express from "express";
+import Layout from "@podium/layout";
+import pino from "pino";
 
-import config from './config/index.js';
+import config from "./config/index.js";
 
-const BASE_PATH = '/bilabo-imove-test';
-
-// const HOST = 'https://www.flatoy.wtf/manifest.json';
-const HOST = 'http://localhost:3000/manifest.json'
-const CONTENT = `${HOST}${BASE_PATH}`;
 
 const logger = pino({
-    level: config.get('logLevel'),
+  level: config.get("logLevel"),
 });
 
-const app = express({logger})
+const app = express({ logger });
 
 const layout = new Layout({
-    development: config.get('development'),
-    pathname: '/',
-    logger,
-    name: 'podium-example',
+  development: config.get("development"),
+  pathname: "/",
+  logger,
+  name: "layout-server",
 });
 
-const mainPodlet = layout.client.register({
-  name: 'main', // required
-  uri: HOST, // required
+const main = layout.client.register({
+  name: "main",
+  uri: config.get("podlets.main"),
+});
+
+const header = layout.client.register({
+  name: "header",
+  uri: config.get("podlets.header"),
+});
+
+const footer = layout.client.register({
+  name: "footer",
+  uri: config.get("podlets.footer"),
+});
+
+const sidebar = layout.client.register({
+  name: "sidebar",
+  uri: config.get("podlets.sidebar"),
 });
 
 app.use(layout.middleware());
 
-
-app.get('/', async (req, res) => {
+app.get("/", async (req, res) => {
   const incoming = res.locals.podium;
-  const response = await mainPodlet.fetch(incoming);
 
-
-  console.log(response.js)
+  const [$main, $header, $footer, $sidebar] = await Promise.all([
+    main.fetch(incoming),
+    header.fetch(incoming),
+    footer.fetch(incoming),
+    sidebar.fetch(incoming),
+  ]);
 
   // response.js
   // response.css
@@ -45,12 +57,11 @@ app.get('/', async (req, res) => {
 
   // promise all for flere podlets, gir array
 
-  incoming.view.title = 'Layout Server Example';
-  incoming.podlets = [response]
+  incoming.view.title = "Layout Server Example";
+  incoming.podlets = [$main, $header, $footer, $sidebar];
 
-  res.podiumSend(`<div>${response.content}</div>`);
+  res.podiumSend(`<div>${$main.content}</div>`);
 });
-
 
 // const headerPodlet = layout.client.register({
 //     name: 'header',
@@ -63,8 +74,11 @@ app.get('/', async (req, res) => {
 // });
 
 try {
-    await app.listen(config.get('port'), '0.0.0.0');
+  const PORT = config.get("port");
+  await app.listen(PORT, () => {
+    console.log(`Layout server running at http://localhost:${PORT}`);
+  });
 } catch (err) {
-    logger.error(err);
-    process.exit(1);
+  logger.error(err);
+  process.exit(1);
 }

@@ -1,11 +1,10 @@
 {
   "logLevel": "debug",
-  "shutdownGracePeriod": 0,
-  "metrics": false,
   "development": true,
   "podlets": {
-    "header": "http://header.svc.dev.finn.no/manifest.json",
-    "footer": "http://footer.svc.dev.finn.no/manifest.json",
-    "main": "http://localhost:3000/manifest.json"
+    "header": "http://localhost:8081/manifest.json",
+    "main": "http://localhost:8082/manifest.json",
+    "sidebar": "http://localhost:8083/manifest.json",
+    "footer": "http://localhost:8084/manifest.json"
   }
 }

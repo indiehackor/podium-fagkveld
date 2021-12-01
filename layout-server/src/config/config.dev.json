@@ -1,7 +1,1 @@
-{
-    "sitesUrl": "//dev.finn.no",
-    "podlets": {
-        "header": "http://header.svc.dev.finn.no/manifest.json",
-        "footer": "http://footer.svc.dev.finn.no/manifest.json"
-    }
-}
+{}

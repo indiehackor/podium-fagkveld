@@ -26,20 +26,11 @@ const conf = convict({
     default: Date.now().toString(),
     env: "VERSION",
   },
-  env: {
-    format: ["local", "dev", "prod"],
-    default: "local",
-    env: "FIAAS_ENVIRONMENT",
-  },
   logLevel: {
     format: ["trace", "debug", "info", "warn", "error", "fatal", "silent"],
     default: "info",
     env: "LOG_LEVEL",
     arg: "log-level",
-  },
-  metrics: {
-    format: Boolean,
-    default: true,
   },
   development: {
     format: Boolean,
@@ -52,21 +43,16 @@ const conf = convict({
     env: "PORT",
     arg: "port",
   },
-  shutdownGracePeriod: {
-    doc: "Grace period to allow connections to finish before shutdown",
-    default: 5000,
-    format: "nat",
-  },
-  sitesUrl: {
-    format: String,
-    default: "//www.finn.no",
-  },
   podlets: {
     header: { format: "url", default: "http://header/manifest.json" },
     footer: { format: "url", default: "http://footer/manifest.json" },
+    sidebar: {
+      format: "url",
+      default: "http://sidebar/manifest.json",
+    },
     main: {
       format: "url",
-      default: "http://localhost:3000/manifest.json",
+      default: "http://main/manifest.json",
     },
   },
 });
