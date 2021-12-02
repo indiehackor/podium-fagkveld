@@ -1,0 +1,16 @@
+{
+  "name": "podium-fagkveld",
+  "workspaces": [
+    "html-footer",
+    "html-header",
+    "layout-server",
+    "react-main",
+    "vue-sidebar"
+  ],
+  "dependencies": {
+    "ttab": "^0.7.2"
+  },
+  "scripts": {
+    "all": "sh run-all.sh"
+  }
+}
