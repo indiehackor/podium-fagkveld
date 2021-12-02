@@ -19,7 +19,6 @@ aside#sidebar {
   flex-direction: column;
 }
 
-
 a {
   margin-bottom: 16px;
   color: white;

@@ -22,7 +22,7 @@ const layout = new Layout({
 
 layout.css({ value: 'http://localhost:8080/public/styles.css'  });
 
-
+// https://podium-lib.io/docs/api/layout#clientregisteroptions
 const main = layout.client.register({
   name: "main",
   uri: config.get("podlets.main"),
@@ -46,6 +46,7 @@ const sidebar = layout.client.register({
 app.use(layout.middleware());
 
 app.get("/", async (req, res) => {
+  // https://podium-lib.io/docs/api/incoming
   const incoming = res.locals.podium;
 
   const [$main, $header, $footer, $sidebar] = await Promise.all([
@@ -55,28 +56,11 @@ app.get("/", async (req, res) => {
     sidebar.fetch(incoming),
   ]);
 
-  // response.js
-  // response.css
-
-  // use document templet, will include it automatically
-
-  // promise all for flere podlets, gir array
-
   incoming.view.title = "Layout Server Example";
   incoming.podlets = [$main, $header, $footer, $sidebar];
 
   res.podiumSend($header.content + $main.content + $sidebar.content + $footer.content);
 });
-
-// const headerPodlet = layout.client.register({
-//     name: 'header',
-//     uri: config.get('podlets.header'),
-// });
-
-// const footerPodlet = layout.client.register({
-//     name: 'footer',
-//     uri: config.get('podlets.footer'),
-// });
 
 try {
   const PORT = config.get("port");

@@ -17,14 +17,6 @@ app.use(express.static("public"))
 
 podlet.css({ value: `http://localhost:${port}/styles.css`  });
 
-// podlet.css({})
-
-// bruk full
-
-// podlet og layout har default html template
-// localt full template, layout får bare snippet. 
-// broser får hele template med podlet, layout får bare snippet
-
 app.get(podlet.content(), (req, res) => {
   res.status(200).podiumSend(`<footer id="footer">I'm a footer</footer>`);
 })
