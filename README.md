@@ -1,9 +1,19 @@
-## layout-server
+### layout-server
+Podium layout that fetches and stitch together all the podlet into one page.
+### vue-sidebar
+Vue podlet
 
-## vue-sidebar
+### react-main
+React podlet
+### html-footer
+Plain html and css podlet
+### html-header
+Plain html and css podlet
 
-## react-main
+## How to run
+1. `npm install`
+2. `npm run all`
 
-## html-footer
+Then visit `http://localhost:8080`
 
-## html-header
+Or you could run each podlet individually from its directory.
